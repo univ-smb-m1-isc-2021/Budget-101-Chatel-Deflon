@@ -3,7 +3,7 @@
 ## But :
 Réaliser une application de planification et suivie de dépenses.
 
-Participants Groupe 1:
+Participants :
 - Elodie Deflon
 - Antoine Chatel
 
