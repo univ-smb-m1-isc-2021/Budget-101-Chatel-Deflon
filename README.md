@@ -13,4 +13,5 @@ Participants Groupe 1:
 - je peux saisir des dépenses ponctuelles (5 janvier ; vidange ; 85e)
 - ces 3 critères prévision de dépenses ; provision ; dépenses ; constituent un budget
 - je reçois un mail récapitulatif en fin de mois avec l'état de chacun de mes différents budgets
+
 L'argent de tous ces budgets s'agrègent dans un compte global.
