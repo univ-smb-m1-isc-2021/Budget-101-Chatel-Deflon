@@ -1,7 +1,8 @@
 # Budget-101-Chatel-Deflon
 
 ## But :
-Réaliser une application de planification et suivie de dépenses
+Réaliser une application de planification et suivie de dépenses.
+
 Participants Groupe 1:
 - Elodie Deflon
 - Antoine Chatel
