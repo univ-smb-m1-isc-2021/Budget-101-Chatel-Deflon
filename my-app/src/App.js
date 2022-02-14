@@ -8,34 +8,15 @@ function App() {
                 {/*<img src={logo} alt="Logo"/>*/}
             </header>
             <div>
-                <h2>Connexion :</h2>
                 <form>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <label>Pseudo : </label>
-                                </td>
-                                <td>
-                                    <input type="text" name="username" required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label>Mot de passe : </label></td>
-                                <td><input type="password" name="password" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input name="submit" type="submit" value="Connexion"/></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <input type="text" name="username" required/>
+                    <br/>
+                    <input name="submit" type="submit" value="Submit"/>
                 </form>
-                <div>
-                    <a href={"#"}>Mot de passe oublié</a>
-                </div>
-                <div>
-                    <a href={"#"}>Créer un compte</a>
-                </div>
+            </div>
+            <hr/>
+            <div>
+                <span id="test"></span>
             </div>
         </div>
     );
