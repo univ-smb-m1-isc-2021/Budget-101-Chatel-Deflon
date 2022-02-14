@@ -5,7 +5,6 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <h1>Gunter - my budget 101</h1>
-                {/*<img src={logo} alt="Logo"/>*/}
             </header>
             <div>
                 <form>
@@ -16,7 +15,7 @@ function App() {
             </div>
             <hr/>
             <div>
-                <span id="test"></span>
+                <span id="test">hello</span>
             </div>
         </div>
     );
