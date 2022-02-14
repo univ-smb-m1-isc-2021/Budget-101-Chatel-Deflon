@@ -23,5 +23,6 @@
 \my-app\yarn-error.log*
 
 \my-spring\.idea
+\my-spring\target
 
 \.idea
