@@ -1,12 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1>The Gunter App</h1>
-                <h2>My Budget 101</h2>
+                <h1>Gunter - my budget 101</h1>
                 {/*<img src={logo} alt="Logo"/>*/}
             </header>
             <div>

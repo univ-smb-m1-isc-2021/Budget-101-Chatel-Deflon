@@ -1,0 +1,37 @@
+body {
+    background-color: #323257;
+    color: #ffffff;
+    margin-top: 15%;
+}
+
+a {
+    color: #bcffef;
+}
+
+.title-connect {
+    margin-bottom: 2%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.body-connect {
+    text-align: center;
+}
+
+.table-connect {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-connect {
+    margin-top: 1%;
+    margin-bottom: 1.5%;
+    background-color: #d55c2a;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    cursor: pointer;
+}
