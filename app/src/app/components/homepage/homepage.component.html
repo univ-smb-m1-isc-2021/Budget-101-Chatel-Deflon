@@ -1,0 +1,7 @@
+<p>homepage works!</p>
+
+<mat-card *ngFor="let todo of todos">
+  <mat-card-header>{{ todo.title }}</mat-card-header>
+</mat-card>
+
+<button (click)="removeTodos()">Remove todos</button>
