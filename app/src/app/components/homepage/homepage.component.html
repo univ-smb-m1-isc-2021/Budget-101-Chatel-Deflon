@@ -1,7 +1,15 @@
-<p>homepage works!</p>
+<mat-toolbar class="topnav">
+  <img id="logo" routerLink="/" src="./assets/logo.png" />
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/gestion">Gestion</a>
+  <a routerLink="/user">[Username]</a>
+  <a routerLink="/logout">Déconnexion</a>
+</mat-toolbar>
 
-<mat-card *ngFor="let todo of todos">
-  <mat-card-header>{{ todo.title }}</mat-card-header>
-</mat-card>
+<h1>
+  Hello world !
+</h1>
 
-<button (click)="removeTodos()">Remove todos</button>
+<div>
+  **En développement**
+</div>
