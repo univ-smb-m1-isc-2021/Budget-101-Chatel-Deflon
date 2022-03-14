@@ -22,7 +22,4 @@
 \my-app\yarn-debug.log*
 \my-app\yarn-error.log*
 
-\my-spring\.idea
-\my-spring\target
-
 \.idea
