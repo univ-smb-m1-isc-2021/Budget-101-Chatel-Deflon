@@ -3,20 +3,29 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 
-export interface Todo {
-  completed: boolean;
-  id: number;
-  title: string;
-  userId: number;
-}
+// export interface Todo {
+//   completed: boolean;
+//   id: number;
+//   title: string;
+//   userId: number;
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
 
-  getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  private springUrl: string;
+
+  constructor(private http: HttpClient) {
+    this.springUrl = 'http://localhost:8080/hello';
   }
+
+  public getHello(): Observable<string[]> {
+    return this.http.get<string[]>(this.springUrl);
+  }
+
+  // getTodos(): Observable<Todo[]> {
+  //   return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  // }
 }

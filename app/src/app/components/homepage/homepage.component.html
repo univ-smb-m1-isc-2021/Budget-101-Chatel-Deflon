@@ -6,9 +6,9 @@
   <a routerLink="/logout">Déconnexion</a>
 </mat-toolbar>
 
-<h1>
-  Hello world !
-</h1>
+<ul>
+    <li *ngFor="let book of hello">{{ book }}</li>
+</ul>
 
 <div>
   **En développement**
