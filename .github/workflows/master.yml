@@ -25,7 +25,7 @@ jobs:
       #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t springboot:latest .
+        run: docker build -t springboot .
 
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
