@@ -3,7 +3,7 @@ name: Publish prod image
 on:
   push:
     branches:
-      - main
+      - docker-branch
 
 jobs:
 
@@ -33,5 +33,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: univ-smb-m1-isc-2021/budget-101-chatel-deflon/main
+          repository: univ-smb-m1-isc-2021/budget-101-chatel-deflon/docker-branch
           tags: latest
