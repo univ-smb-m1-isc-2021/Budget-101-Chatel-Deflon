@@ -25,7 +25,7 @@ jobs:
       #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t springboot .
+        run: docker build -t gunter-101 .
 
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
