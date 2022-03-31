@@ -1,5 +1,6 @@
 package budget.persistence;
 
+import budget.application.BudgetService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -8,9 +9,11 @@ import javax.annotation.PostConstruct;
 public class Initializer {
 
     private final TestRepository repository;
+    private final BudgetRepository budgetRepository;
 
-    public Initializer(TestRepository repository) {
+    public Initializer(TestRepository repository, BudgetRepository budgetRepository) {
         this.repository = repository;
+        this.budgetRepository = budgetRepository;
     }
 
     @PostConstruct
@@ -25,6 +28,13 @@ public class Initializer {
             repository.saveAndFlush(new Test("Test3", "Le test 3, c'est plus fort que toi"));
             repository.saveAndFlush(new Test("Test4", "Le test 4, est meilleurs que toi aux cartes"));
             repository.saveAndFlush(new Test("Test5"));
+        }
+
+        if (budgetRepository.findAll().isEmpty()) {
+            budgetRepository.saveAndFlush(new Budget("Voiture"));
+            budgetRepository.saveAndFlush(new Budget("Courses"));
+            budgetRepository.saveAndFlush(new Budget("Rénovations"));
+            budgetRepository.saveAndFlush(new Budget("Vacances"));
         }
     }
 }
