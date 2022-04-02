@@ -19,11 +19,11 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class HomeController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private final TestService testService;
-    private final BudgetService budgetService;
+//    private final BudgetService budgetService;
 
-    public HomeController(TestService testService, BudgetService budgetService) {
+    public HomeController(TestService testService) {
         this.testService = testService;
-        this.budgetService = budgetService;
+//        this.budgetService = budgetService;
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
@@ -36,12 +36,12 @@ public class HomeController {
                 .collect(toList());
     }
 
-    @GetMapping(value = "api/budgets")
-    public List<String> budgets() {
-        logger.info("Serving Budgets");
-        return budgetService.budgets()
-                .stream()
-                .map(p -> p.getName())
-                .collect(toList());
-    }
+//    @GetMapping(value = "api/budgets")
+//    public List<String> budgets() {
+//        logger.info("Serving Budgets");
+//        return budgetService.budgets()
+//                .stream()
+//                .map(p -> p.getName())
+//                .collect(toList());
+//    }
 }
