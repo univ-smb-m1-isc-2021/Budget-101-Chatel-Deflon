@@ -24,7 +24,9 @@ public class BudgetService {
         budget.ifPresent(repository::delete);
     }
 
-    public void create(String name) {
-        repository.save(new Budget(name));
+    public Budget create(String name) {
+        return repository.save(new Budget(name));
     }
+
+    public Budget create(Budget budget){return repository.save(new Budget(budget.getName()));}
 }
