@@ -12,11 +12,13 @@ public class Initializer {
     private final TestRepository repository;
     private final BudgetRepository budgetRepository;
     private final ExpenseRepository expenseRepository;
+    private final UserRepository userRepository;
 
-    public Initializer(TestRepository repository, BudgetRepository budgetRepository, ExpenseRepository expenseRepository) {
+    public Initializer(TestRepository repository, BudgetRepository budgetRepository, ExpenseRepository expenseRepository, UserRepository userRepository) {
         this.repository = repository;
         this.budgetRepository = budgetRepository;
         this.expenseRepository = expenseRepository;
+        this.userRepository = userRepository;
     }
 
     @PostConstruct
@@ -41,6 +43,10 @@ public class Initializer {
         }
         if (expenseRepository.findAll().isEmpty()) {
             expenseRepository.saveAndFlush(new PunctualExpense("DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
+        }
+
+        if(userRepository.findAll().isEmpty()){
+            userRepository.saveAndFlush(new User("root", "root", "root@root.fr"));
         }
     }
 }

@@ -24,3 +24,4 @@ L'argent de tous ces budgets s'agrègent dans un compte global.
 - Tutoriel jpa : https://spring.io/guides/gs/accessing-data-jpa/
 - https://spring.io/guides/tutorials/rest/
 - https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
+- https://hellokoding.com/registration-and-login-example-with-spring-security-spring-boot-spring-data-jpa-hsql-jsp/
