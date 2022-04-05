@@ -16,7 +16,7 @@ public class BudgetController {
     public BudgetController(BudgetService budgetService) {
         this.budgetService = budgetService;
     }
-
+    @CrossOrigin(origins="http://localhost:4200/", maxAge=3600)
     @GetMapping("/budgets")
     List<Budget> budgets() {
         return budgetService.budgets();
