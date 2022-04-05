@@ -22,8 +22,13 @@ public class BudgetController {
         return budgetService.budgets();
     }
 
-    @PostMapping("/newbudget" )
-    Budget newBudget(@RequestBody Budget newBudget,@PathVariable("name") String name ) {
-        return budgetService.create(new Budget(name));
+    @GetMapping("/newbudget/{name}")
+    Budget newBudget(@PathVariable("name") String name) {
+        return budgetService.create(name);
+    }
+
+    @GetMapping("/rmbudget/{id}")
+    void newBudget(@PathVariable("id") Long id) {
+        budgetService.delete(id);
     }
 }
