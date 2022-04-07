@@ -15,4 +15,12 @@ public class EditBudgetForm {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "EditBudgetForm{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
