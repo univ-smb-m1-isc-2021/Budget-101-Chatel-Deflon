@@ -1,7 +1,9 @@
-package budget.persistence;
+package budget.persistence.user;
 
+import budget.persistence.budget.Budget;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import javax.persistence.*;
 import java.util.Collection;

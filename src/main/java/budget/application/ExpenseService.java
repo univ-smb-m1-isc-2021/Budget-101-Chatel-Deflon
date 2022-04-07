@@ -1,7 +1,7 @@
 package budget.application;
 
 import budget.ExpenseRepetition;
-import budget.persistence.*;
+import budget.persistence.expense.*;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;

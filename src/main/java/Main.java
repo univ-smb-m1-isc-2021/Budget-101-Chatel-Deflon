@@ -1,8 +1,8 @@
 import budget.ExpenseRepetition;
-import budget.persistence.Budget;
-import budget.persistence.PunctualExpense;
-import budget.persistence.RecurrentExpense;
-import budget.persistence.SpreadExpense;
+import budget.persistence.budget.Budget;
+import budget.persistence.expense.PunctualExpense;
+import budget.persistence.expense.RecurrentExpense;
+import budget.persistence.expense.SpreadExpense;
 
 import java.sql.Date;
 

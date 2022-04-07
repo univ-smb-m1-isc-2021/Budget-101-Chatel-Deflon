@@ -1,5 +1,6 @@
-package budget.persistence;
+package budget.persistence.budget;
 
+import budget.persistence.budget.Budget;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

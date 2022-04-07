@@ -1,7 +1,8 @@
-package budget.persistence;
+package budget.persistence.expense;
+
+import budget.persistence.expense.Expense;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.sql.Date;
 
 @Entity

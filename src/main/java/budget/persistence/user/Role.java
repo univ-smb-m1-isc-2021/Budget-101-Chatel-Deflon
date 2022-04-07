@@ -1,4 +1,6 @@
-package budget.persistence;
+package budget.persistence.user;
+
+import budget.persistence.user.User;
 
 import javax.persistence.*;
 import java.util.Set;

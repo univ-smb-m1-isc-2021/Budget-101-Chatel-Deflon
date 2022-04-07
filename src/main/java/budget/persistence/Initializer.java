@@ -1,6 +1,11 @@
 package budget.persistence;
 
-import budget.application.BudgetService;
+import budget.persistence.budget.Budget;
+import budget.persistence.budget.BudgetRepository;
+import budget.persistence.expense.ExpenseRepository;
+import budget.persistence.expense.PunctualExpense;
+import budget.persistence.user.User;
+import budget.persistence.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

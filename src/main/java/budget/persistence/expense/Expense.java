@@ -1,4 +1,4 @@
-package budget.persistence;
+package budget.persistence.expense;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

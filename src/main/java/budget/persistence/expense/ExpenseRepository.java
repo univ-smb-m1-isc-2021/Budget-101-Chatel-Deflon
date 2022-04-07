@@ -1,5 +1,6 @@
-package budget.persistence;
+package budget.persistence.expense;
 
+import budget.persistence.expense.Expense;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

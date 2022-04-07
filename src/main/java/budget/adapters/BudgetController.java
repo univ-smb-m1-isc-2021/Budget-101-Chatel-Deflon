@@ -1,12 +1,11 @@
 package budget.adapters;
 
 import budget.application.BudgetService;
-import budget.persistence.Budget;
-import budget.persistence.User;
+import budget.persistence.budget.Budget;
+import budget.persistence.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package budget.persistence;
+package budget.persistence.budget;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

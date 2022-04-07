@@ -1,7 +1,7 @@
 package budget.application;
 
-import budget.persistence.Budget;
-import budget.persistence.BudgetRepository;
+import budget.persistence.budget.Budget;
+import budget.persistence.budget.BudgetRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

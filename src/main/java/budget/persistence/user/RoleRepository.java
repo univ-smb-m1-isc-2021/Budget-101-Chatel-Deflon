@@ -1,4 +1,4 @@
-package budget.persistence;
+package budget.persistence.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,7 +1,7 @@
 package budget.adapters;
 
 import budget.application.ExpenseService;
-import budget.persistence.Expense;
+import budget.persistence.expense.Expense;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
