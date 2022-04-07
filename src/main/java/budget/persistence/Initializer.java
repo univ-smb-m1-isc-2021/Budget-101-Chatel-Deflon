@@ -6,6 +6,7 @@ import budget.persistence.expense.ExpenseRepository;
 import budget.persistence.expense.PunctualExpense;
 import budget.persistence.user.User;
 import budget.persistence.user.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -36,7 +37,7 @@ public class Initializer {
         }
 
         if(userRepository.findAll().isEmpty()){
-            userRepository.saveAndFlush(new User("root", "root", "root@root.fr"));
+            userRepository.saveAndFlush(new User("root",  new BCryptPasswordEncoder().encode("root"), "root@root.fr"));
         }
     }
 }
