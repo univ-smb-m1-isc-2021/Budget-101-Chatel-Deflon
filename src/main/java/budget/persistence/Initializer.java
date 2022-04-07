@@ -46,7 +46,7 @@ public class Initializer {
 
         }
         if (expenseRepository.findAll().isEmpty()) {
-            expenseRepository.saveAndFlush(new PunctualExpense("DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
+            expenseRepository.saveAndFlush(new PunctualExpense(idRoot,"DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
         }
     }
 }

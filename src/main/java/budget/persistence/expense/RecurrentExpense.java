@@ -1,8 +1,5 @@
 package budget.persistence.expense;
 
-import budget.ExpenseRepetition;
-import budget.persistence.expense.Expense;
-
 import javax.persistence.Entity;
 import java.sql.Date;
 
@@ -13,12 +10,15 @@ public class RecurrentExpense extends Expense {
 
     public RecurrentExpense() {
         super();
+        this.setType(ExpenseType.RECURRENT);
         this.date = new Date(System.currentTimeMillis());
         this.repetition = ExpenseRepetition.MONTHLY;
     }
 
-    public RecurrentExpense(String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
+    public RecurrentExpense(Long userId,String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
         super();
+        this.setUserId(userId);
+        this.setType(ExpenseType.RECURRENT);
         this.setLabel(label);
         this.setAmount(amount);
         this.setBudgetId(budgetId);

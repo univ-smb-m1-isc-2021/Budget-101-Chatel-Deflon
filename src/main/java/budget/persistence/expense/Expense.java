@@ -9,15 +9,18 @@ public class Expense {
     @Id
     @GeneratedValue
     private Long id;
-    private Float amount;
+    private ExpenseType type;
     private String label;
+    private Float amount;
+    private Long userId;
     private Long budgetId;
 
     public Expense() {
         // JPA
     }
 
-    public Expense(Float amount, String label, Long budgetId) {
+    public Expense(Long userId,Float amount, String label, Long budgetId) {
+        this.userId = userId;
         this.amount = amount;
         this.label = label;
         this.budgetId = budgetId;
@@ -53,5 +56,21 @@ public class Expense {
 
     public void setBudgetId(Long budgetId) {
         this.budgetId = budgetId;
+    }
+
+    public ExpenseType getType() {
+        return type;
+    }
+
+    public void setType(ExpenseType type) {
+        this.type = type;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

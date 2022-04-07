@@ -11,11 +11,14 @@ public class PunctualExpense extends Expense {
 
     public PunctualExpense() {
         super();
+        this.setType(ExpenseType.PUNCTUAL);
         this.date = new Date(System.currentTimeMillis());
     }
 
-    public PunctualExpense(String label, Float amount, Long budgetId, Date date){
+    public PunctualExpense(Long userId, String label, Float amount, Long budgetId, Date date) {
         super();
+        this.setUserId(userId);
+        this.setType(ExpenseType.PUNCTUAL);
         this.setLabel(label);
         this.setAmount(amount);
         this.setBudgetId(budgetId);
@@ -30,7 +33,7 @@ public class PunctualExpense extends Expense {
         this.date = date;
     }
 
-    public String toString(){
-        return String.format("PunctualExpense : {label : %s, amount : %f, date : %s, budgetId : %d}",getLabel(), getAmount(), getDate().toString(), getBudgetId());
+    public String toString() {
+        return String.format("PunctualExpense : {label : %s, amount : %f, date : %s, budgetId : %d}", getLabel(), getAmount(), getDate().toString(), getBudgetId());
     }
 }

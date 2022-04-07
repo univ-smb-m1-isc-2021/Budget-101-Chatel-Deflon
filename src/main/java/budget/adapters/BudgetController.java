@@ -1,6 +1,7 @@
 package budget.adapters;
 
 import budget.adapters.request_template.EditBudgetForm;
+import budget.adapters.request_template.RemoveByIdForm;
 import budget.adapters.request_template.RmBudgetForm;
 import budget.adapters.request_template.NewBudgetForm;
 import budget.adapters.web.security.jwt.JwtTokenUtil;
@@ -42,12 +43,12 @@ public class BudgetController {
     }
 
     @PostMapping("/rmbudget")
-    void newBudget(@RequestBody RmBudgetForm budgetForm) {
-        budgetService.delete(budgetForm.getId());
+    void rmBudget(@RequestBody RemoveByIdForm removeByIdForm) {
+        budgetService.delete(removeByIdForm.getId());
     }
 
     @PostMapping("/editbudget")
-    Budget newBudget(@RequestBody EditBudgetForm budgetForm){
+    Budget editBudget(@RequestBody EditBudgetForm budgetForm){
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();

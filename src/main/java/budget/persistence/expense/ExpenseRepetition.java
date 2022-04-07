@@ -1,4 +1,4 @@
-package budget;
+package budget.persistence.expense;
 
 public enum ExpenseRepetition {
     DAILY,

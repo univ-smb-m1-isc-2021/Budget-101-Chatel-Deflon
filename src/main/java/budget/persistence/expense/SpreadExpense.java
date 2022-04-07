@@ -12,10 +12,13 @@ public class SpreadExpense extends Expense {
 
     public SpreadExpense() {
         super();
+        this.setType(ExpenseType.SPREAD);
     }
 
-    public SpreadExpense(String label, Float amount, Long budgetId, Date end) {
+    public SpreadExpense(Long userId, String label, Float amount, Long budgetId, Date end) {
         super();
+        this.setUserId(userId);
+        this.setType(ExpenseType.SPREAD);
         this.setLabel(label);
         this.setAmount(amount);
         this.setBudgetId(budgetId);
@@ -23,8 +26,10 @@ public class SpreadExpense extends Expense {
         this.end = end;
     }
 
-    public SpreadExpense(String label, Float amount, Long budgetId, Date start, Date end) {
+    public SpreadExpense(Long userId, String label, Float amount, Long budgetId, Date start, Date end) {
         super();
+        this.setUserId(userId);
+        this.setType(ExpenseType.SPREAD);
         this.setLabel(label);
         this.setAmount(amount);
         this.setBudgetId(budgetId);

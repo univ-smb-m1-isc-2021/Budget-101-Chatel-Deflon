@@ -1,6 +1,6 @@
 package budget.application;
 
-import budget.ExpenseRepetition;
+import budget.persistence.expense.ExpenseRepetition;
 import budget.persistence.expense.*;
 import org.springframework.stereotype.Service;
 
@@ -16,22 +16,32 @@ public class ExpenseService {
         this.repository = repository;
     }
 
-    public List<Expense> expenses(){return this.repository.findAll();}
+    public List<Expense> expenses() {
+        return this.repository.findAll();
+    }
 
-    public void delete(Long expenseId){
+    public List<Expense> expenses(Long userId) {
+        return this.repository.findExpensesByUserId(userId);
+    }
+
+    public List<Expense> expensesOfBudget(Long budgetId) {
+        return this.repository.findExpensesByBudgetId(budgetId);
+    }
+
+    public void delete(Long expenseId) {
         Optional<Expense> expense = repository.findById(expenseId);
         expense.ifPresent(repository::delete);
     }
 
-    public Expense createPunctualExpense(String label, Float amount, Long budgetId, Date date){
-        return repository.save(new PunctualExpense(label,amount,budgetId,date));
+    public Expense createPunctualExpense(Long userId, String label, Float amount, Long budgetId, Date date) {
+        return repository.save(new PunctualExpense(userId, label, amount, budgetId, date));
     }
 
-    public Expense createRecurrentExpense(String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition){
-        return repository.save(new RecurrentExpense(label,amount,budgetId,date,repetition));
+    public Expense createRecurrentExpense(Long userId, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
+        return repository.save(new RecurrentExpense(userId, label, amount, budgetId, date, repetition));
     }
 
-    public Expense createSpreadExpense(String label, Float amount, Long budgetId, Date end){
-        return repository.save(new SpreadExpense(label,amount,budgetId,end));
+    public Expense createSpreadExpense(Long userId, String label, Float amount, Long budgetId, Date start, Date end) {
+        return repository.save(new SpreadExpense(userId, label, amount, budgetId, start, end));
     }
 }
