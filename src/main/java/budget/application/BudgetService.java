@@ -19,14 +19,20 @@ public class BudgetService {
         return this.repository.findAll();
     }
 
+    public List<Budget> budgets(Long userId){return this.repository.findBudgetByUserId(userId);}
+
     public void delete(Long budgetId) {
         Optional<Budget> budget = repository.findById(budgetId);
         budget.ifPresent(repository::delete);
     }
 
-    public Budget create(String name) {
-        return repository.save(new Budget(name));
+    public Budget create(String name, Long userId) {
+        return repository.save(new Budget(name, userId));
     }
 
-    public Budget create(Budget budget){return repository.save(new Budget(budget.getName()));}
+    public Budget edit(Long id, String name, Long userId){
+        return repository.save(new Budget(id,name,userId));
+    }
+
+    public Budget create(Budget budget){return repository.save(new Budget(budget.getName(), budget.getUserId()));}
 }

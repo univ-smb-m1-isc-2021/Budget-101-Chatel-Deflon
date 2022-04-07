@@ -1,5 +1,9 @@
 package budget.adapters;
 
+import budget.adapters.request_template.EditBudgetForm;
+import budget.adapters.request_template.RmBudgetForm;
+import budget.adapters.request_template.NewBudgetForm;
+import budget.adapters.web.security.jwt.JwtTokenUtil;
 import budget.application.BudgetService;
 import budget.persistence.budget.Budget;
 import budget.persistence.user.User;
@@ -13,36 +17,40 @@ import java.util.List;
 @RestController
 public class BudgetController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private JwtTokenUtil tokenUtil;
     private BudgetService budgetService;
 
-    public BudgetController(BudgetService budgetService) {
+    public BudgetController(BudgetService budgetService, JwtTokenUtil tokenUtil) {
         this.budgetService = budgetService;
+        this.tokenUtil = tokenUtil;
     }
-    @CrossOrigin(origins="http://localhost:4200/", maxAge=3600)
+
     @GetMapping("/budgets")
     List<Budget> budgets() {
-        return budgetService.budgets();
+        // Get concerned user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return budgetService.budgets(user.getId());
     }
 
-    @GetMapping("/newbudget/{name}")
-    Budget newBudget(@PathVariable("name") String name) {
-        return budgetService.create(name);
+    @PostMapping("/newbudget")
+    Budget newBudget(@RequestBody NewBudgetForm budgetForm) {
+        // Get concerned user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return budgetService.create(budgetForm.getName(), user.getId());
     }
 
-    @GetMapping("/rmbudget/{id}")
-    void newBudget(@PathVariable("id") Long id) {
-        budgetService.delete(id);
+    @PostMapping("/rmbudget")
+    void newBudget(@RequestBody RmBudgetForm budgetForm) {
+        budgetService.delete(budgetForm.getId());
     }
 
-    @GetMapping("/api/user")
-    public String getCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String username;
-        if (principal instanceof User) {
-            username = ((User)principal).toString();
-        } else {
-            username = principal.toString();
-        }
-        return username;
+    @PostMapping("/editbudget")
+    Budget newBudget(@RequestBody EditBudgetForm budgetForm){
+        // Get concerned user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return budgetService.edit(budgetForm.getId(), budgetForm.getName(), user.getId());
     }
 }

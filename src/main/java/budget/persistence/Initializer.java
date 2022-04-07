@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class Initializer {
@@ -26,18 +27,26 @@ public class Initializer {
 
     @PostConstruct
     public void initialize() {
-        if (budgetRepository.findAll().isEmpty()) {
-            budgetRepository.saveAndFlush(new Budget("Voiture"));
-            budgetRepository.saveAndFlush(new Budget("Courses"));
-            budgetRepository.saveAndFlush(new Budget("Rénovations"));
-            budgetRepository.saveAndFlush(new Budget("Vacances"));
-        }
-        if (expenseRepository.findAll().isEmpty()) {
-            expenseRepository.saveAndFlush(new PunctualExpense("DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
-        }
+        budgetRepository.deleteAll();
+        expenseRepository.deleteAll();
+        userRepository.deleteAll();
 
         if(userRepository.findAll().isEmpty()){
             userRepository.saveAndFlush(new User("root",  new BCryptPasswordEncoder().encode("root"), "root@root.fr"));
+            userRepository.saveAndFlush(new User("foo",  new BCryptPasswordEncoder().encode("foo"), "root@root.fr"));
+        }
+
+        Long idRoot = userRepository.findUserByUsername("root").getId();
+        Long idFoot = userRepository.findUserByUsername("foo").getId();
+        if (budgetRepository.findAll().isEmpty()) {
+            budgetRepository.saveAndFlush(new Budget("Voiture",idFoot));
+            budgetRepository.saveAndFlush(new Budget("Courses",idRoot));
+            budgetRepository.saveAndFlush(new Budget("Rénovations",idRoot));
+            budgetRepository.saveAndFlush(new Budget("Vacances",idRoot));
+
+        }
+        if (expenseRepository.findAll().isEmpty()) {
+            expenseRepository.saveAndFlush(new PunctualExpense("DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
         }
     }
 }

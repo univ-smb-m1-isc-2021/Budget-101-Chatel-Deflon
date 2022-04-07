@@ -1,14 +1,11 @@
 package budget.persistence.user;
 
-import budget.persistence.budget.Budget;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+
 
 @Entity
 public class User implements UserDetails {
@@ -18,12 +15,6 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String email;
-
-    @OneToMany
-    private List<Budget> budgets;
-
-    @ManyToMany
-    private Set<Role> roles;
 
     public User() {
     }
@@ -61,15 +52,6 @@ public class User implements UserDetails {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
 
     @Override
     public String toString() {

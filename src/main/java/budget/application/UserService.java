@@ -1,5 +1,6 @@
 package budget.application;
 
+import budget.persistence.budget.Budget;
 import budget.persistence.user.User;
 import budget.persistence.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -21,6 +23,15 @@ public class UserService implements UserDetailsService {
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    public User create(String name, String password, String email){
+        return userRepository.save(new User(name, password, email));
+    }
+
+    public void delete(Long userId){
+        Optional<User> user = userRepository.findById(userId);
+        user.ifPresent(userRepository::delete);
     }
 
     @Override

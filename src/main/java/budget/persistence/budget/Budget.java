@@ -10,12 +10,24 @@ public class Budget {
     @GeneratedValue
     private long id;
     private String name;
+    private Long userId;
 
     public Budget() {
     }
 
     public Budget(String name) {
         this.name = name;
+    }
+
+    public Budget(String name, Long owner) {
+        this.name = name;
+        userId = owner;
+    }
+
+    public Budget(Long id, String name, Long owner){
+        this.id = id;
+        this.name = name;
+        this.userId = owner;
     }
 
     public long getId() {
@@ -34,7 +46,11 @@ public class Budget {
         this.name = name;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
     public String toString() {
-        return String.format("Budget : {name : %s, id : %d}", this.getName(), this.getId());
+        return String.format("Budget : {id : %d, name : %s, userId : %d}", this.getId(), this.getName(), userId);
     }
 }
