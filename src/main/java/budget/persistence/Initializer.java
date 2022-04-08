@@ -1,5 +1,6 @@
 package budget.persistence;
 
+import budget.adapters.web.security.SecurityConfig;
 import budget.persistence.budget.Budget;
 import budget.persistence.budget.BudgetRepository;
 import budget.persistence.expense.ExpenseRepository;
@@ -32,8 +33,8 @@ public class Initializer {
         userRepository.deleteAll();
 
         if(userRepository.findAll().isEmpty()){
-            userRepository.saveAndFlush(new User("root",  new BCryptPasswordEncoder().encode("root"), "root@root.fr"));
-            userRepository.saveAndFlush(new User("foo",  new BCryptPasswordEncoder().encode("foo"), "root@root.fr"));
+            userRepository.saveAndFlush(new User("root",  SecurityConfig.passwordEncoder().encode("root"), "root@root.fr"));
+            userRepository.saveAndFlush(new User("foo",  SecurityConfig.passwordEncoder().encode("foo"), "root@root.fr"));
         }
 
         Long idRoot = userRepository.findUserByUsername("root").getId();

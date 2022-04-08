@@ -4,6 +4,9 @@ public class UserForm {
     private String username;
     private String email;
 
+    public UserForm() {
+    }
+
     public UserForm(String username, String email) {
         this.username = username;
         this.email = email;
