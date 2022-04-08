@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    name : build docker branch
+    name : build docker
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
