@@ -3,12 +3,12 @@ name: Publish prod image
 on:
   push:
     branches:
-      - main
+      - docker-branch
 
 jobs:
 
   build:
-    name : build developement branch
+    name : build docker branch
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,7 +25,7 @@ jobs:
       #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t springboot .
+        run: docker build -t gunter-101 .
 
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v1
@@ -33,5 +33,5 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: univ-smb-m1-isc-2021/budget-101-chatel-deflon/main
+          repository: univ-smb-m1-isc-2021/budget-101-chatel-deflon/docker-branch
           tags: latest
