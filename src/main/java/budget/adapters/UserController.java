@@ -26,9 +26,7 @@ public class UserController {
     UserForm getUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        UserForm tmp = new UserForm(user.getUsername(),user.getEmail());
-        System.out.println(tmp);
-        return tmp;
+        return new UserForm(user.getUsername(),user.getEmail());
     }
 
     @PostMapping("/register")
