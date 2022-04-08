@@ -3,7 +3,6 @@ name: Publish prod image
 on:
   push:
     branches:
-      - main
       - docker-branch
 
 jobs:
