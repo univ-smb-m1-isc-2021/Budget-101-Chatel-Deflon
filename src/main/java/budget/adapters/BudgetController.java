@@ -2,9 +2,8 @@ package budget.adapters;
 
 import budget.adapters.request_template.EditBudgetForm;
 import budget.adapters.request_template.RemoveByIdForm;
-import budget.adapters.request_template.RmBudgetForm;
+
 import budget.adapters.request_template.NewBudgetForm;
-import budget.adapters.web.security.jwt.JwtTokenUtil;
 import budget.application.BudgetService;
 import budget.persistence.budget.Budget;
 import budget.persistence.user.User;
@@ -17,13 +16,11 @@ import java.util.List;
 
 @RestController
 public class BudgetController {
+    private final BudgetService budgetService;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private JwtTokenUtil tokenUtil;
-    private BudgetService budgetService;
 
-    public BudgetController(BudgetService budgetService, JwtTokenUtil tokenUtil) {
+    public BudgetController(BudgetService budgetService) {
         this.budgetService = budgetService;
-        this.tokenUtil = tokenUtil;
     }
 
     @GetMapping("/budgets")
@@ -48,7 +45,7 @@ public class BudgetController {
     }
 
     @PostMapping("/editbudget")
-    Budget editBudget(@RequestBody EditBudgetForm budgetForm){
+    Budget editBudget(@RequestBody EditBudgetForm budgetForm) {
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
