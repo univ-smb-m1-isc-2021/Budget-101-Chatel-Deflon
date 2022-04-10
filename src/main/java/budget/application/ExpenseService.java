@@ -37,6 +37,10 @@ public class ExpenseService {
         return repository.save(new PunctualExpense(userId, label, amount, budgetId, date));
     }
 
+    public Expense editExpense(Expense expense) {
+        return repository.saveAndFlush(expense);
+    }
+
     public Expense createRecurrentExpense(Long userId, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
         return repository.save(new RecurrentExpense(userId, label, amount, budgetId, date, repetition));
     }

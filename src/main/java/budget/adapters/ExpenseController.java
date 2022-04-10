@@ -3,8 +3,7 @@ package budget.adapters;
 import budget.adapters.request_template.*;
 import budget.application.ExpenseService;
 import budget.persistence.budget.Budget;
-import budget.persistence.expense.Expense;
-import budget.persistence.expense.ExpenseRepetition;
+import budget.persistence.expense.*;
 import budget.persistence.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +41,13 @@ public class ExpenseController {
         return expenseService.createPunctualExpense(user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate());
     }
 
+    @PostMapping("editpuncexpense")
+    Expense editPunctualExpense(@RequestBody EditPunctualExpenseForm expenseForm) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return expenseService.editExpense(new PunctualExpense(user.getId(), expenseForm.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate()));
+    }
+
     @PostMapping("/newrecexpense")
     Expense newRecurrentExpense(@RequestBody NewRecurrentExpenseForm expenseForm) {
         // Get concerned user
@@ -50,12 +56,27 @@ public class ExpenseController {
         return expenseService.createRecurrentExpense(user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate(), expenseForm.getRepetition());
     }
 
+    @PostMapping("editrecexpense")
+    Expense editRecExpense(@RequestBody EditRecurrentExpenseForm expenseForm) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return expenseService.editExpense(new RecurrentExpense(user.getId(), expenseForm.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate(), expenseForm.getRepetition()));
+    }
+
     @PostMapping("/newsprexpense")
     Expense newSpreadExpense(@RequestBody NewSpreadExpenseForm expenseForm) {
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
         return expenseService.createSpreadExpense(user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getStart(), expenseForm.getEnd());
+    }
+
+    @PostMapping("/editsprexpense")
+    Expense editSpreadExpense(@RequestBody EditSpreadExpenseForm expenseForm) {
+        // Get concerned user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return expenseService.editExpense(new SpreadExpense(user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getStart(), expenseForm.getEnd()));
     }
 
     @PostMapping("/rmexpense")

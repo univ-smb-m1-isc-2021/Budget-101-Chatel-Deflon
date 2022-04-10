@@ -19,7 +19,7 @@ public class Expense {
         // JPA
     }
 
-    public Expense(Long userId,Float amount, String label, Long budgetId) {
+    public Expense(Long userId, Float amount, String label, Long budgetId) {
         this.userId = userId;
         this.amount = amount;
         this.label = label;
@@ -72,5 +72,17 @@ public class Expense {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "id=" + id +
+                ", type=" + type +
+                ", label='" + label + '\'' +
+                ", amount=" + amount +
+                ", userId=" + userId +
+                ", budgetId=" + budgetId +
+                '}';
     }
 }

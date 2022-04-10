@@ -1,6 +1,5 @@
 package budget.application;
 
-import budget.application.UserService;
 import budget.persistence.user.User;
 import budget.persistence.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -12,11 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -31,17 +27,12 @@ public class UserServiceTest {
     private User userTest1;
     private User userTest2;
     private User userTest3;
-    private List<User> userList;
-
 
     @BeforeEach
     public void setUp() {
         userTest1 = new User("test1", "passTest1", "test1@test.com");
         userTest2 = new User("test2", "passTest2", "test2@test.com");
         userTest3 = new User("test3", "passTest3", "test3@test.com");
-        userList = new ArrayList<>();
-        userList.add(userTest1);
-        userList.add(userTest2);
     }
 
     @AfterEach

@@ -26,6 +26,18 @@ public class RecurrentExpense extends Expense {
         this.repetition = repetition;
     }
 
+    public RecurrentExpense(Long userId, Long id, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition){
+        super();
+        super.setId(id);
+        this.setUserId(userId);
+        this.setType(ExpenseType.RECURRENT);
+        this.setLabel(label);
+        this.setAmount(amount);
+        this.setBudgetId(budgetId);
+        this.date = date;
+        this.repetition = repetition;
+    }
+
     public Date getDate() {
         return date;
     }
