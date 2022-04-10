@@ -39,15 +39,16 @@ public class Initializer {
 
         Long idRoot = userRepository.findUserByUsername("root").getId();
         Long idFoot = userRepository.findUserByUsername("foo").getId();
+        Long idBud = 0l;
         if (budgetRepository.findAll().isEmpty()) {
-            budgetRepository.saveAndFlush(new Budget("Voiture",idFoot));
+            idBud = budgetRepository.saveAndFlush(new Budget("Voiture",idFoot)).getId();
             budgetRepository.saveAndFlush(new Budget("Courses",idRoot));
             budgetRepository.saveAndFlush(new Budget("Rénovations",idRoot));
             budgetRepository.saveAndFlush(new Budget("Vacances",idRoot));
 
         }
         if (expenseRepository.findAll().isEmpty()) {
-            expenseRepository.saveAndFlush(new PunctualExpense(idRoot,"DepenseVoiture", 200.0f, budgetRepository.findAll().get(0).getId(), new Date(System.currentTimeMillis())));
+            expenseRepository.saveAndFlush(new PunctualExpense(idRoot,"DepenseVoiture", 200.0f, idBud, new Date(System.currentTimeMillis())));
         }
     }
 }

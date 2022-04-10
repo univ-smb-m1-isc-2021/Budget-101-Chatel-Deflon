@@ -33,19 +33,12 @@ public class ExpenseService {
         expense.ifPresent(repository::delete);
     }
 
-    public Expense createPunctualExpense(Long userId, String label, Float amount, Long budgetId, Date date) {
-        return repository.save(new PunctualExpense(userId, label, amount, budgetId, date));
-    }
-
-    public Expense editExpense(Expense expense) {
+    public Expense create(Expense expense) {
         return repository.saveAndFlush(expense);
     }
 
-    public Expense createRecurrentExpense(Long userId, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
-        return repository.save(new RecurrentExpense(userId, label, amount, budgetId, date, repetition));
+    public Expense edit(Expense expense) {
+        return repository.saveAndFlush(expense);
     }
 
-    public Expense createSpreadExpense(Long userId, String label, Float amount, Long budgetId, Date start, Date end) {
-        return repository.save(new SpreadExpense(userId, label, amount, budgetId, start, end));
-    }
 }

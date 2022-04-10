@@ -56,7 +56,7 @@ public class UserController {
         userService.delete(user.getId());
     }
 
-//  Annulé car multipes soucis au niveau de la réauthentification via jwt
+//  Annulé car multipes soucis au niveau de la réauthentification via jwt (on a plus le temsp :') )
 //    @PostMapping("/edituser")
 //    UserForm editUser(@RequestBody ModifUserForm userForm) {
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication()

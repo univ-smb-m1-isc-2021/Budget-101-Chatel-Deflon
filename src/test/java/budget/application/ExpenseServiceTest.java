@@ -49,5 +49,7 @@ public class ExpenseServiceTest {
 //    @Test
 //    void createAndPuncExp(){
 //        when(expenseRepository.save(any())).thenReturn(exp1);
+//        expenseService.createPunctualExpense(exp1);
+//
 //    }
 }
