@@ -25,8 +25,8 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public User create(String name, String password, String email) {
-        return userRepository.save(new User(name, password, email));
+    public User create(User user) {
+        return userRepository.saveAndFlush(user);
     }
 
     public void delete(Long userId) {

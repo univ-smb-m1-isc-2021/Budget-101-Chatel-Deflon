@@ -30,9 +30,9 @@ public class UserServiceTest {
 
     @BeforeEach
     public void setUp() {
-        userTest1 = new User("test1", "passTest1", "test1@test.com");
-        userTest2 = new User("test2", "passTest2", "test2@test.com");
-        userTest3 = new User("test3", "passTest3", "test3@test.com");
+        userTest1 = new User(1L, "test1", "passTest1", "test1@test.com");
+        userTest2 = new User(2L, "test2", "passTest2", "test2@test.com");
+        userTest3 = new User(3L, "test3", "passTest3", "test3@test.com");
     }
 
     @AfterEach
@@ -44,9 +44,9 @@ public class UserServiceTest {
     @Test
     void createAndSaveUser() {
         //stubbing
-        when(userRepository.save(any())).thenReturn(userTest1);
-        userService.create(userTest1.getUsername(), userTest1.getPassword(), userTest1.getEmail());
-        verify(userRepository, times(1)).save(any());
+        when(userRepository.saveAndFlush(any())).thenReturn(userTest1);
+        userService.create(userTest1);
+        verify(userRepository, times(1)).saveAndFlush(any());
     }
 
     @Test
@@ -61,5 +61,19 @@ public class UserServiceTest {
         when(userRepository.saveAndFlush(any())).thenReturn(userTest1);
         userService.edit(userTest2);
         verify(userRepository, times(1)).saveAndFlush(any());
+    }
+
+    @Test
+    void findUserByUsername() {
+        when(userRepository.findUserByUsername(any())).thenReturn(userTest1);
+        userService.userByName(userTest1.getUsername());
+        verify(userRepository, times(1)).findUserByUsername(any());
+    }
+
+    @Test
+    void findUserById() {
+        when(userRepository.findUserById(userTest1.getId())).thenReturn(userTest1);
+        userService.userById(userTest1.getId());
+        verify(userRepository, times(1)).findUserById(userTest1.getId());
     }
 }

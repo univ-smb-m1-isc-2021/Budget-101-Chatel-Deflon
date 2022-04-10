@@ -36,7 +36,7 @@ public class BudgetController {
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        return budgetService.create(budgetForm.getName(), user.getId());
+        return budgetService.create(new Budget(budgetForm.getName(), user.getId()));
     }
 
     @PostMapping("/rmbudget")
@@ -49,6 +49,6 @@ public class BudgetController {
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        return budgetService.edit(budgetForm.getId(), budgetForm.getName(), user.getId());
+        return budgetService.edit(new Budget(budgetForm.getId(), budgetForm.getName(), user.getId()));
     }
 }

@@ -25,6 +25,14 @@ public class User implements UserDetails {
         this.email = email;
     }
 
+    // For test ONLY
+    public User(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
     public Long getId() {
         return id;
     }

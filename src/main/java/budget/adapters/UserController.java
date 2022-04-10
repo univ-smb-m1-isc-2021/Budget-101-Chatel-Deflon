@@ -36,7 +36,7 @@ public class UserController {
 
     @PostMapping("/register")
     Boolean newUser(@RequestBody NewUserForm userForm) {
-        User user = userService.create(userForm.getUsername(), new BCryptPasswordEncoder().encode(userForm.getPassword()), userForm.getEmail());
+        User user = userService.create(new User(userForm.getUsername(), new BCryptPasswordEncoder().encode(userForm.getPassword()), userForm.getEmail()));
         return user != null;
     }
 
