@@ -15,7 +15,7 @@ public class RecurrentExpense extends Expense {
         this.repetition = ExpenseRepetition.MONTHLY;
     }
 
-    public RecurrentExpense(Long userId,String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
+    public RecurrentExpense(Long userId, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
         super();
         this.setUserId(userId);
         this.setType(ExpenseType.RECURRENT);
@@ -26,7 +26,7 @@ public class RecurrentExpense extends Expense {
         this.repetition = repetition;
     }
 
-    public RecurrentExpense(Long userId, Long id, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition){
+    public RecurrentExpense(Long userId, Long id, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
         super();
         super.setId(id);
         this.setUserId(userId);
@@ -54,7 +54,13 @@ public class RecurrentExpense extends Expense {
         this.repetition = repetition;
     }
 
+    @Override
     public String toString() {
         return String.format("RecurrentExpense : {label : %s, amount : %f, date : %s, repetition : %s , budgetId : %d}", getLabel(), getAmount(), getDate().toString(), this.getRepetition(), getBudgetId());
+    }
+
+    @Override
+    public String mailRecap() {
+        return String.format("  %-15s       %-15s       %-15s       %-15s       %-15s\n", getLabel(), getAmount(), getType(), getDate(), getRepetition());
     }
 }

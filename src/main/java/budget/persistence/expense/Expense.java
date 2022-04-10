@@ -85,4 +85,8 @@ public class Expense {
                 ", budgetId=" + budgetId +
                 '}';
     }
+
+    public String mailRecap() {
+        return "erreur";
+    }
 }

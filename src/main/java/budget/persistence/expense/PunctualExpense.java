@@ -50,4 +50,9 @@ public class PunctualExpense extends Expense {
                 "date=" + date +
                 "}";
     }
+
+    @Override
+    public String mailRecap(){
+        return String.format("  %-15s       %-15s       %-15s       %-15s\n",getLabel(), getAmount(), getType(), getDate());
+    }
 }

@@ -53,7 +53,13 @@ public class SpreadExpense extends Expense {
         this.end = end;
     }
 
+    @Override
     public String toString() {
         return String.format("SpreadExpense : {label : %s, amount : %f, start : %s, end : %s, budgetId : %d}", getLabel(), getAmount(), getStart().toString(), getEnd().toString(), getBudgetId());
+    }
+
+    @Override
+    public String mailRecap() {
+        return String.format("  %-15s       %-15s       %-15s       %-15s       %-15s\n", getLabel(), getAmount(), getType(), getStart(), getEnd());
     }
 }
