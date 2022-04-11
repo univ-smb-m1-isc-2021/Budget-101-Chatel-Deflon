@@ -25,6 +25,17 @@ public class PunctualExpense extends Expense {
         this.date = date;
     }
 
+    public PunctualExpense(Long id, Long userId, String label, Float amount, Long budgetId, Date date){
+        super();
+        super.setId(id);
+        this.setUserId(userId);
+        this.setType(ExpenseType.PUNCTUAL);
+        this.setLabel(label);
+        this.setAmount(amount);
+        this.setBudgetId(budgetId);
+        this.date = date;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -33,7 +44,15 @@ public class PunctualExpense extends Expense {
         this.date = date;
     }
 
+    @Override
     public String toString() {
-        return String.format("PunctualExpense : {label : %s, amount : %f, date : %s, budgetId : %d}", getLabel(), getAmount(), getDate().toString(), getBudgetId());
+        return super.toString() + "PunctualExpense{" +
+                "date=" + date +
+                "}";
+    }
+
+    @Override
+    public String mailRecap(){
+        return String.format("  %-15s       %-15s       %-15s       %-15s\n",getLabel(), getAmount(), getType(), getDate());
     }
 }
