@@ -37,6 +37,18 @@ public class SpreadExpense extends Expense {
         this.end = end;
     }
 
+    public SpreadExpense(Long id, Long userId, String label, Float amount, Long budgetId, Date start, Date end) {
+        super();
+        setId(id);
+        this.setUserId(userId);
+        this.setType(ExpenseType.SPREAD);
+        this.setLabel(label);
+        this.setAmount(amount);
+        this.setBudgetId(budgetId);
+        this.start = start;
+        this.end = end;
+    }
+
     public Date getStart() {
         return start;
     }

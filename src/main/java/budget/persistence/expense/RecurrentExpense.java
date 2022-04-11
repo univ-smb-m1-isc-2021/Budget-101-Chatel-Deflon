@@ -26,7 +26,7 @@ public class RecurrentExpense extends Expense {
         this.repetition = repetition;
     }
 
-    public RecurrentExpense(Long userId, Long id, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
+    public RecurrentExpense(Long id, Long userId, String label, Float amount, Long budgetId, Date date, ExpenseRepetition repetition) {
         super();
         super.setId(id);
         this.setUserId(userId);

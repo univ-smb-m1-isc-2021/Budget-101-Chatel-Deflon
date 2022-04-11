@@ -43,7 +43,7 @@ public class ExpenseController {
     Expense editPunctualExpense(@RequestBody EditPunctualExpenseForm expenseForm) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        return expenseService.edit(new PunctualExpense(user.getId(), expenseForm.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate()));
+        return expenseService.edit(new PunctualExpense(expenseForm.getId(), user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate()));
     }
 
     @PostMapping("/newrecexpense")
@@ -58,7 +58,7 @@ public class ExpenseController {
     Expense editRecExpense(@RequestBody EditRecurrentExpenseForm expenseForm) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        return expenseService.edit(new RecurrentExpense(user.getId(), expenseForm.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate(), expenseForm.getRepetition()));
+        return expenseService.edit(new RecurrentExpense(expenseForm.getId(), user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getDate(), expenseForm.getRepetition()));
     }
 
     @PostMapping("/newsprexpense")
@@ -74,7 +74,7 @@ public class ExpenseController {
         // Get concerned user
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
-        return expenseService.edit(new SpreadExpense(user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getStart(), expenseForm.getEnd()));
+        return expenseService.edit(new SpreadExpense(expenseForm.getId(), user.getId(), expenseForm.getLabel(), expenseForm.getAmount(), expenseForm.getBudgetId(), expenseForm.getStart(), expenseForm.getEnd()));
     }
 
     @PostMapping("/rmexpense")

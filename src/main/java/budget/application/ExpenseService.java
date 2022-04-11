@@ -40,5 +40,4 @@ public class ExpenseService {
     public Expense edit(Expense expense) {
         return repository.saveAndFlush(expense);
     }
-
 }
