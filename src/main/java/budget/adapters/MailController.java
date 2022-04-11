@@ -6,6 +6,8 @@ import budget.mail.EmailSenderService;
 import budget.persistence.budget.Budget;
 import budget.persistence.expense.Expense;
 import budget.persistence.user.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +18,11 @@ import java.util.List;
 
 @RestController
 public class MailController {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     @Autowired
     private EmailSenderService service;
-    private BudgetService budgetService;
-    private ExpenseService expenseService;
+    private final BudgetService budgetService;
+    private final ExpenseService expenseService;
 
     public MailController(BudgetService budgetService, ExpenseService expenseService) {
         this.budgetService = budgetService;
@@ -35,14 +38,14 @@ public class MailController {
         List<Budget> budgets = budgetService.budgets(user.getId());
         List<Expense> expenses;
 
-        String recap = "";
-        for (int i = 0; i < budgets.size(); i++) {
-            recap += (budgets.get(i).getName() + "\n");
-            expenses = new ArrayList<>(expenseService.expensesOfBudget(budgets.get(i).getId()));
-            for (int j = 0; j < expenses.size(); j++) {
-                recap += (expenses.get(j).mailRecap());
+        StringBuilder recap = new StringBuilder();
+        for (Budget budget : budgets) {
+            recap.append(budget.getName()).append("\n");
+            expenses = new ArrayList<>(expenseService.expensesOfBudget(budget.getId()));
+            for (Expense expens : expenses) {
+                recap.append(expens.mailRecap());
             }
         }
-        service.sendRecap(user, recap);
+        service.sendRecap(user, recap.toString());
     }
 }

@@ -1,30 +1,35 @@
 package budget.adapters;
 
-import budget.adapters.request_template.ModifUserForm;
 import budget.adapters.request_template.NewUserForm;
 import budget.adapters.request_template.UserForm;
-import budget.adapters.web.security.SecurityConfig;
+import budget.application.BudgetService;
+import budget.application.ExpenseService;
 import budget.application.UserService;
+import budget.persistence.budget.Budget;
+import budget.persistence.expense.Expense;
 import budget.persistence.user.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Objects;
+import java.util.List;
 
 @RestController
 public class UserController {
     private final UserService userService;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final BudgetService budgetService;
+    private final ExpenseService expenseService;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, BudgetService budgetService, ExpenseService expenseService) {
         this.userService = userService;
+        this.budgetService = budgetService;
+        this.expenseService = expenseService;
     }
 
     @GetMapping("/user")
@@ -49,10 +54,20 @@ public class UserController {
         return new UserForm(user.getUsername(), user.getEmail());
     }
 
-    @PostMapping("removeuser")
+    @GetMapping("removeuser")
     void removeUser() {
         User user = (User) SecurityContextHolder.getContext().getAuthentication()
                 .getPrincipal();
+        // Suppression des données utilisateur
+        List<Budget> tmp = budgetService.budgets(user.getId());
+        for (Budget budget : tmp) {
+            budgetService.delete(budget.getId());
+        }
+        List<Expense> tmpExp = expenseService.expenses(user.getId());
+        for (Expense expense : tmpExp) {
+            expenseService.delete(expense.getId());
+        }
+        // Suppression de l'utilisateur
         userService.delete(user.getId());
     }
 

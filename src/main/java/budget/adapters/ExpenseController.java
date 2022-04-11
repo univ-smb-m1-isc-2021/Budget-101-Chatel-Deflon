@@ -16,8 +16,8 @@ import java.util.List;
 
 @RestController
 public class ExpenseController {
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private ExpenseService expenseService;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final ExpenseService expenseService;
 
     public ExpenseController(ExpenseService expenseService) {
         this.expenseService = expenseService;

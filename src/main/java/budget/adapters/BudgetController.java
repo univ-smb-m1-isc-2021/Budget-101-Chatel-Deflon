@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 public class BudgetController {
     private final BudgetService budgetService;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public BudgetController(BudgetService budgetService) {
         this.budgetService = budgetService;
